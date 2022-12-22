@@ -14,4 +14,9 @@ after_success:
   - docker build -t s3jacob/multi-nginx ./ngnix
   - docker build -t s3jacob/multi-server ./server
   - docker build -t s3jacob/multi-worker ./worker
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - docker push s3jacob/multi-client
+  - docker push s3jacob/multi-nginx
+  - docker push s3jacob/multi-server
+  - docker push s3jacob/multi-worker
 
